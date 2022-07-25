@@ -5,19 +5,24 @@ pipeline {
 
     stages {
 
-        stage('build') {
-            steps {
-                script {
-                echo 'Building the application......'
-                }
-            }
-        }
-
         stage('test') {
             steps {
                 script {
                   echo 'Testing the application.........'
                 }
+            }
+        }
+
+        stage('build') {
+            when {
+                    expression {
+                        BRANCH_NAME == 'main'
+                    }
+                }
+            steps {
+                 script {
+                    echo 'Building the application......'
+                    }
             }
         }
 
