@@ -37,7 +37,14 @@ pipeline {
         }
 
         stage('deploy') {
-            
+            input{
+                message "Select the environment to deploy"
+                ok "Done"
+                parameters {
+                    choice(name: 'ONE', ['dev', 'stagging', 'prod'], description: '')
+                    choice(name: 'TWO', ['dev', 'stagging', 'prod', description: ''])
+                }
+            }
             when {
                 expression {
                     params.executeTests == true
@@ -46,6 +53,8 @@ pipeline {
             steps {
                 script {
                     gv.deployApp()
+                    echo "deployment to ${ONE}"
+                    echo "deployment to ${TWO}"
                 }
             }
         }
