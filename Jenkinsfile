@@ -41,8 +41,8 @@ pipeline {
                 message "Select the environment to deploy"
                 ok "Done"
                 parameters {
-                    choice(name: 'ONE', ['dev', 'stagging', 'prod'], description: '')
-                    choice(name: 'TWO', ['dev', 'stagging', 'prod'], description: '')
+                    choice(name: 'ONE', choices: ['dev', 'stagging', 'prod'], description: '')
+                    choice(name: 'TWO', choices: ['dev', 'stagging', 'prod'], description: '')
                 }
             }
             when {
