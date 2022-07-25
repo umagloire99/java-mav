@@ -1,62 +1,46 @@
 def gv
 
 pipeline {
-    
+
     agent any
-    parameters {
-        choice(name: 'VERSION', choices: ['1.1.0', '1.1.1', '1.1.2'])
-        booleanParam(name: 'executeTests', defaultValue:true, description: 'execute the phase only is true')
+
+    tools {
+        maven 'Maven'
     }
-    stages { 
+
+    stages {
 
         stage('init') {
-
             steps {
                 script {
-                     gv = load('script.groovy')
+                    gv = load('script.groovy')
                 }
             }
         }
 
-        stage('build') {
-
+        stage('build jar') {
             steps {
                 script {
-                    gv.buildApp()
+                    gv.buildJar()
                 }
             }
         }
 
-        stage('test') {
-
+        stage('build Image') {
             steps {
                 script {
-                    gv.testApp()
+                    gv.buildImage()
                 }
             }
         }
 
         stage('deploy') {
-            input{
-                message "Select the environment to deploy"
-                ok "Done"
-                parameters {
-                    choice(name: 'ONE', choices: ['dev', 'stagging', 'prod'], description: '')
-                    choice(name: 'TWO', choices: ['dev', 'stagging', 'prod'], description: '')
-                }
-            }
-            when {
-                expression {
-                    params.executeTests == true
-                }
-            }
             steps {
                 script {
                     gv.deployApp()
-                    echo "deployment to ${ONE}"
-                    echo "deployment to ${TWO}"
                 }
             }
         }
+
     }
 }
