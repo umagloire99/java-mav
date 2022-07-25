@@ -1,3 +1,4 @@
+def gv
 
 pipeline {
     
@@ -8,16 +9,27 @@ pipeline {
     }
     stages { 
 
+        stage('init') {
+            steps {
+                gv = load('script.groovy')
+            }
+        }
+
         stage('build') {
 
             steps {
-                echo 'building the application ......'
+                script {
+                    gv.buildApp()
+                }
             }
         }
+        
         stage('test') {
 
             steps {
-                echo 'testing the application ....'
+                script {
+                    gv.testApp()
+                }
             }
         }
 
@@ -28,7 +40,9 @@ pipeline {
                 }
             }
             steps {
-                echo 'deploying the application .....'
+                script {
+                    gv.deployApp()
+                }
             }
         }
     }
