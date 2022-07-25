@@ -10,6 +10,7 @@ pipeline {
     stages { 
 
         stage('init') {
+
             steps {
                 script {
                      gv = load('script.groovy')
@@ -36,6 +37,7 @@ pipeline {
         }
 
         stage('deploy') {
+            
             when {
                 expression {
                     params.executeTests == true
