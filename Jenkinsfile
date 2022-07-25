@@ -42,7 +42,7 @@ pipeline {
                 ok "Done"
                 parameters {
                     choice(name: 'ONE', ['dev', 'stagging', 'prod'], description: '')
-                    choice(name: 'TWO', ['dev', 'stagging', 'prod', description: ''])
+                    choice(name: 'TWO', ['dev', 'stagging', 'prod'], description: ''])
                 }
             }
             when {
