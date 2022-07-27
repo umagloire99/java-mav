@@ -27,7 +27,7 @@ pipeline {
         stage('Build Jar') {
             steps {
                 script {
-                    buildJar()
+                    buildJar 'umagloire/demo-app:3.0'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    buildImage()
+                    buildImage 'umagloire/demo-app:3.0'
                 }
             }
         }
