@@ -32,7 +32,7 @@ pipeline {
             }
         }
 
-        stage('Build Image and push') {
+        stage('Build Image and push image') {
             steps {
                 script {
                     buildImage 'umagloire/demo-app:3.0'
