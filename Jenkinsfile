@@ -8,7 +8,7 @@ pipeline {
         stage('test') {
             steps {
                 script {
-                  echo 'Testing the application.........'
+                  echo 'Testing the application hey.........'
                 }
             }
         }
@@ -16,7 +16,7 @@ pipeline {
         stage('build') {
             steps {
                  script {
-                    echo 'Building the application......'
+                    echo 'Building the application well man ......'
                     }
             }
         }
