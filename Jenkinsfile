@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 /* groovylint-disable-next-line CompileStatic */
-@library('jenkins-shared-library')
+@Library('jenkins-shared-library')
 
 /* groovylint-disable-next-line CompileStatic, NoDef, UnusedVariable, VariableTypeRequired */
 def gv
