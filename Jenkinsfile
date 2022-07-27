@@ -32,10 +32,12 @@ pipeline {
             }
         }
 
-        stage('Build Image') {
+        stage('Build Image and push') {
             steps {
                 script {
                     buildImage 'umagloire/demo-app:3.0'
+                    dockerLogin()
+                    dockerPusher 'umagloire/demo-app:3.0'
                 }
             }
         }
